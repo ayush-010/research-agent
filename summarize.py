@@ -6,11 +6,7 @@ load_dotenv()
 
 client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
-def summarize_results(query: str, results: list) -> str:
-    """
-    Takes the original query and a list of search result dicts
-    ({title, url, content}) and returns a cited, synthesized answer.
-    """
+def summarize_results(query: str, results: list, history_context: str = "") -> str:
     context_blocks = []
     for i, r in enumerate(results, start=1):
         context_blocks.append(
@@ -18,9 +14,15 @@ def summarize_results(query: str, results: list) -> str:
         )
     context = "\n".join(context_blocks)
 
+    history_block = f"\n{history_context}\n" if history_context else ""
+
     prompt = f"""You are a research assistant. Answer the user's question using ONLY the sources below.
 Cite sources inline using [1], [2], etc. matching the source numbers.
 If sources conflict or are insufficient, say so clearly.
+{history_block}
+If the current question refers back to the previous conversation (e.g. "what about...", "and its cost"),
+use that context to understand what's being asked, but still answer using the sources provided below.
+
 
 Question: {query}
 

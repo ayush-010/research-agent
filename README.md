@@ -45,3 +45,16 @@ python agent.py "what are the latest breakthroughs in solid-state batteries"
 - [ ] Save results to a file (markdown/PDF export)
 - [ ] Conversation memory for follow-up questions
 - [ ] Web UI (Streamlit or Flask)
+
+## Usage
+
+### CLI (interactive)
+\`\`\`bash
+python agent.py
+\`\`\`
+
+### Web GUI
+\`\`\`bash
+streamlit run app.py
+\`\`\`
+Opens a chat interface in your browser at `http://localhost:8501`.

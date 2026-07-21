@@ -7,6 +7,12 @@ st.set_page_config(page_title="Research Agent", page_icon="🔍", layout="center
 st.title("🔍 Research Agent")
 st.caption("Ask a question. It searches the web and gives you a cited answer.")
 
+with st.sidebar:
+    st.header("Settings")
+    if st.button("🗑️ Clear conversation"):
+        st.session_state.history = []
+        st.rerun()
+
 # Session-only memory — resets when the browser tab is closed/refreshed
 if "history" not in st.session_state:
     st.session_state.history = []

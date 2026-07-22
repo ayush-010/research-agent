@@ -6,6 +6,7 @@ st.set_page_config(page_title="Research Agent", page_icon="🔍", layout="center
 
 st.title("🔍 Research Agent")
 st.caption("Ask a question. It searches the web and gives you a cited answer.")
+st.divider()
 
 with st.sidebar:
     st.header("Settings")

@@ -6,11 +6,14 @@ load_dotenv()
 
 client = TavilyClient(api_key=os.environ["TAVILY_API_KEY"])
 
+
+
 def web_search(query: str, max_results: int = 5):
     """
     Search the web and return a list of dicts:
     [{title, url, content}, ...]
     """
+    
     response = client.search(
         query=query,
         max_results=max_results,
